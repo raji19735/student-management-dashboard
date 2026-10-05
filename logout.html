@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged Out - Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-page logout-page">
+
+<div class="login-container">
+
+    <div class="login-card logout-card">
+
+        <div class="logout-icon">
+            ✔
+        </div>
+
+        <h1>You have been logged out</h1>
+
+        <p class="login-subtitle">
+            Thank you for using the Student Management System.
+            Your session has ended safely.
+        </p>
+
+        <a href="login.html" class="btn btn-primary btn-full">
+            Login Again
+        </a>
+
+        <a href="register.html" class="btn btn-secondary btn-full logout-secondary">
+            Create New Account
+        </a>
+
+        <p class="redirect-note">
+            Redirecting to login page in
+            <strong id="countdown">5</strong> seconds...
+        </p>
+
+        <p class="login-footer">
+            © 2026 Student Management System
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+    // Make sure the session is cleared even if this page is opened directly
+    localStorage.removeItem("loggedIn");
+
+    let seconds = 5;
+    const countdown = document.getElementById("countdown");
+
+    const timer = setInterval(function () {
+        seconds--;
+        countdown.textContent = seconds;
+
+        if (seconds <= 0) {
+            clearInterval(timer);
+            window.location.href = "login.html";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
